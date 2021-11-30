@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.client.AdminViewController">
+  <tabs>
+    <Tab fx:id="clientTab"  text="Монитор">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </content></Tab>
+    <Tab fx:id="DeparturesTab" onSelectionChanged="#onDeparturesSelected" text="Вылеты">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="departuretable" layoutX="330.0" layoutY="83.0" prefHeight="406.0" prefWidth="416.0">
+                    <columns>
+                      <TableColumn fx:id="flight" prefWidth="92.800048828125" text="Номер рейса" />
+                      <TableColumn fx:id="deptime" prefWidth="123.199951171875" text="Время отправления" />
+                        <TableColumn fx:id="status" prefWidth="96.800048828125" text="Статус рейса" />
+                        <TableColumn fx:id="gatecode" prefWidth="100.79998779296875" text="Номер выхода" />
+                    </columns>
+                  </TableView>
+                  <Pane layoutX="55.0" layoutY="131.0">
+                     <children>
+                        <Button fx:id="addFlight" layoutY="75.0" mnemonicParsing="false" onAction="#onAddDeparture" prefHeight="43.0" prefWidth="179.0" text="Добавить рейс" />
+                        <Button fx:id="changeGateCode" layoutX="1.0" layoutY="226.0" mnemonicParsing="false" onAction="#onChangeGCode" prefHeight="50.0" prefWidth="180.0" text="Изменить номер выхода" />
+                        <Button fx:id="DeleteFlight" layoutY="157.0" mnemonicParsing="false" onAction="#onDeleteFlight" prefHeight="43.0" prefWidth="180.0" text="Удалить рейс" />
+                        <Button fx:id="setStatus" mnemonicParsing="false" onAction="#onSetStatus" prefHeight="43.0" prefWidth="179.0" text="Установить статус" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </content>
+    </Tab>
+      <Tab fx:id="ArrivalsTab" onSelectionChanged="#onArrivalsSelected" text="Прилеты">
+         <content>
+            <Pane>
+               <children>
+                  <TableView fx:id="arrTable" layoutX="300.0" layoutY="102.0" prefHeight="340.0" prefWidth="445.0">
+                    <columns>
+                      <TableColumn fx:id="flightArr" prefWidth="101.60003662109375" text="Номер рейса" />
+                      <TableColumn fx:id="baggage" prefWidth="98.4000244140625" text="Стойка багажа" />
+                        <TableColumn fx:id="arrTime" prefWidth="144.7999267578125" text="Время прибытия" />
+                        <TableColumn fx:id="statusArr" prefWidth="97.79998779296875" text="Статус рейса" />
+                    </columns>
+                  </TableView>
+                  <Pane layoutX="65.0" layoutY="134.0">
+                     <children>
+                        <Button fx:id="addFlight1" layoutY="75.0" mnemonicParsing="false" onAction="#onAddNewArrival" prefHeight="43.0" prefWidth="179.0" text="Добавить рейс" />
+                        <Button fx:id="changeGateCode1" layoutX="1.0" layoutY="226.0" mnemonicParsing="false" onAction="#onChangeBaggage" prefHeight="50.0" prefWidth="180.0" text="Изменить стойку" />
+                        <Button fx:id="DeleteFlight1" layoutY="157.0" mnemonicParsing="false" onAction="#onDeleteAriival" prefHeight="43.0" prefWidth="180.0" text="Удалить рейс" />
+                        <Button fx:id="setStatus1" mnemonicParsing="false" onAction="#onSetArrStatus" prefHeight="43.0" prefWidth="179.0" text="Установить статус" />
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </content></Tab>
+      <Tab onSelectionChanged="#onFlightsSelected" text="Все рейсы">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView fx:id="availableFlights" layoutX="14.0" layoutY="77.0" prefHeight="340.0" prefWidth="515.0">
+                    <columns>
+                      <TableColumn fx:id="flightNum" prefWidth="95.20001220703125" text="Номер рейса" />
+                        <TableColumn fx:id="from" prefWidth="68.800048828125" text="Откуда" />
+                        <TableColumn fx:id="to" prefWidth="61.5999755859375" text="Куда" />
+                      <TableColumn fx:id="price" prefWidth="68.00006103515625" text="Цена" />
+                        <TableColumn fx:id="depart" prefWidth="108.00006103515625" text="Вылет" />
+                        <TableColumn fx:id="arrive" prefWidth="114.39996337890625" text="Прилет" />
+                    </columns>
+                  </TableView>
+                  <Pane layoutX="572.0" layoutY="109.0">
+                     <children>
+                        <Button fx:id="addFlight2" layoutY="75.0" mnemonicParsing="false" onAction="#onAddFlight" prefHeight="43.0" prefWidth="179.0" text="Добавить рейс" />
+                        <Button fx:id="changeGateCode2" layoutX="1.0" layoutY="226.0" mnemonicParsing="false" onAction="#onChangePrice" prefHeight="50.0" prefWidth="180.0" text="Изменить цену" />
+                        <Button fx:id="DeleteFlight2" layoutY="157.0" mnemonicParsing="false" onAction="#onDeleteF" prefHeight="43.0" prefWidth="180.0" text="Удалить рейс" />
+                        <Button fx:id="setStatus2" mnemonicParsing="false" onAction="#onChangeDate" prefHeight="43.0" prefWidth="179.0" text="Изменить дату " />
+                     </children>
+                  </Pane>
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+      <Tab text="Регистрация пассажира">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+      </Tab>
+      <Tab fx:id="clientTab11" onSelectionChanged="#onPilotsTabSelected" text="Пилоты">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </Tab>
+      <Tab fx:id="RWYs" onSelectionChanged="#onRWYsTabSelected" text="ВПП">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </Tab>
+      <Tab fx:id="clientTab1" onSelectionChanged="#onPlanesTabSelected" text="Самолеты">
+         <content>
+            <Pane prefHeight="200.0" prefWidth="200.0" />
+         </content>
+      </Tab>
+  </tabs>
+</TabPane>

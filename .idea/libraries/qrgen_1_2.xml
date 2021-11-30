@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="qrgen-1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/Desktop/javafx-sdk-11.0.2/qrgen-1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
