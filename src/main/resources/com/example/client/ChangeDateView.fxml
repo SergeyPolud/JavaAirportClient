@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane fx:controller="com.example.client.ChangeDateController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="113.0" layoutY="68.0" text="Новая дата отправления" />
+      <Label layoutX="113.0" layoutY="172.0" text="Новая дата прилета" />
+      <TextField fx:id="newDepDate" layoutX="113.0" layoutY="97.0" prefHeight="45.0" prefWidth="183.0" />
+      <TextField fx:id="newArrDate" layoutX="113.0" layoutY="200.0" prefHeight="45.0" prefWidth="183.0" />
+      <Button layoutX="155.0" layoutY="284.0" mnemonicParsing="false" onAction="#onChangeDate" prefHeight="81.0" prefWidth="100.0" text="Изменить" />
+   </children>
+</Pane>

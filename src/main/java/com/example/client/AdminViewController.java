@@ -45,6 +45,7 @@ public class AdminViewController implements Initializable
     public TableColumn<WrapperBooking, Timestamp> arrive;
 
     public List<Booking> books;
+    public List<Flights> flights;
 
 
     public void onDeparturesSelected(Event event) throws IOException
@@ -209,7 +210,7 @@ public class AdminViewController implements Initializable
     {
         availableFlights.getItems().clear();
         NetworkController.outputStream.writeObject("GET_ALL_FLIGHTS");
-        List<Flights> flights = null;
+
         List<WrapperBooking> wrapper = null;
         try
         {
@@ -253,15 +254,58 @@ public class AdminViewController implements Initializable
         onFlightsSelected(actionEvent);
     }
 
-    public void onChangePrice(ActionEvent actionEvent)
+    public void onChangePrice(ActionEvent actionEvent) throws IOException
     {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangePriceView.fxml"));
+        Parent root1 = loader.load();
+        ChangePriceController c = loader.getController();
+        var selected = availableFlights.getSelectionModel().getSelectedItem();
+        var booking = books
+                .stream()
+                .filter(fid -> fid.getFlightId().equals(selected.flightnum))
+                .findFirst()
+                .get();
+        c.setFlight(booking);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1, 288,148));
+        stage.showAndWait();
+        onFlightsSelected(actionEvent);
     }
 
-    public void onDeleteF(ActionEvent actionEvent)
+    public void onDeleteF(ActionEvent actionEvent) throws IOException
     {
+        var selected = availableFlights.getSelectionModel().getSelectedItem();
+        var booking = books
+                .stream()
+                .filter(fid -> fid.getFlightId().equals(selected.flightnum))
+                .findFirst()
+                .get();
+        var flight = flights
+                .stream()
+                .filter(fid -> fid.getFlightId().equals(selected.flightnum))
+                .findFirst()
+                .get();
+        NetworkController.outputStream.writeObject("DELETE_FLIGHT");
+        NetworkController.outputStream.writeObject(flight);
+        NetworkController.outputStream.writeObject(booking);
+        onFlightsSelected(actionEvent);
     }
 
-    public void onChangeDate(ActionEvent actionEvent)
+    public void onChangeDate(ActionEvent actionEvent) throws IOException
     {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("ChangeDateView.fxml"));
+        Parent root1 = loader.load();
+        ChangeDateController c = loader.getController();
+        var selected = availableFlights.getSelectionModel().getSelectedItem();
+        var flight = flights
+                .stream()
+                .filter(fid -> fid.getFlightId().equals(selected.flightnum))
+                .findFirst()
+                .get();
+        c.setFlight(flight);
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root1, 400,400));
+        stage.showAndWait();
+        onFlightsSelected(actionEvent);
     }
 }
